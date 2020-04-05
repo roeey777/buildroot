@@ -1,0 +1,23 @@
+config BR2_CBOOT
+	bool "CBoot"
+	help
+	  Build Nvidia's bootloader for Jetson & Xavier boards.
+	  
+	  CBoot is the primary CPU boot loader used on mobile platforms in the cold boot path.
+	  CBoot is feature-rich boot loader used for cold boot.
+	  In addition to booting the kernel, it also supports display, boot logo, and verified boot.
+
+	  CBoot is based on the Little Kernel (LK) open source boot loader.
+	  CBoot primarily uses the interrupt and scheduling frameworks of LK.
+	  Cboot uses CDF for frameworks, drivers, and libraries.
+
+if BR2_CBOOT
+
+config BR2_CBOOT_NVIDIA_BOARD_TYPE
+	string "nvidia board type"
+	default "t186"
+	help
+	  CBoot is a bootloader only for some of Nvidia's boards such as Jetson TX2/TX2i & Xavier.
+	  The only available options are: t186 & t194.
+
+endif
